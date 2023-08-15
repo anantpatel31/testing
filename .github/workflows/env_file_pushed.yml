@@ -33,5 +33,5 @@ jobs:
                 body: comment
               })
               }
-          
+              exit 1
     
