@@ -1,7 +1,10 @@
 name: ENV file has been pushed
 
 on:
-  push:
+  pull_request:
+    branches:
+      - main
+    
     paths:
       - '**/*.env' # Trigger the workflow when .env file is pushed.
 
