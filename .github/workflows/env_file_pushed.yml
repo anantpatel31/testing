@@ -16,7 +16,7 @@ jobs:
       - name: Create comment
         id: comment
         run: |
-          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly.<br><br>To fix this merge request, run:<br>First we need to get the original env file<br>\`\`\`$ git checkout origin/main -- \"env_file_name\"\`\`\`<br>Now we create a new commit reverting the change, only env change will revert<br>\`\`\`$ git add .\`\`\`<br>\`\`\`$ git commit -m 'Restored env file to origin'\`\`\`<br>\`\`\`$ git push\`\`\`<br><br>## Please create your own .env file and don\'t change local.env" > comment.txt
+          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly.<br><br>To fix this merge request, run:<br>First we need to get the original env file<br>\`\`\`$ git checkout origin/main -- \"env_file_name\"\`\`\`<br>Now we create a new commit reverting the change, only env change will revert<br>\`\`\`$ git add .\`\`\`<br>\`\`\`$ git commit -m 'Restored env file to origin'\`\`\`<br>\`\`\`$ git push\`\`\`<br><br>\#\# Please create your own .env file and don\'t change local.env" > comment.txt
       
       - name: Add comment to PR
         uses: actions/github-script@v6
