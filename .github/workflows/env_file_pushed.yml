@@ -16,7 +16,7 @@ jobs:
       - name: Create comment
         id: comment
         run: |
-          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly. To fix, run:\n\n\`\`\`sh\ngit rm --cached $env_files\ngit commit -m 'Remove .env files from repository'\ngit push\n\`\`\`" > comment.txt
+          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly.<br><br>To fix, run:<br>\`\`\`<br>$ git rm --cached $env_files<br>git commit -m 'Remove .env files from repository'<br>git push<br>\`\`\`" > comment.txt
       
       - name: Add comment to PR
         uses: actions/github-script@v6
