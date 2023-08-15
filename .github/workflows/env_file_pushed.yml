@@ -1,0 +1,35 @@
+name: ENV file has been pushed
+
+on:
+  push:
+    paths:
+      - '**/*.env' # Trigger the workflow when .env file is pushed.
+
+jobs:
+  comment-on-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create comment
+        id: comment
+        run: |
+          comment = "⚠️ **Warning**: `.env` files detected in the changes. Please do not modify them directly. To fix, run:\n\n\`\`\`sh\ngit rm --cached $env_files\ngit commit -m 'Remove .env files from repository'\ngit push\n\`\`\`"
+          echo "$comment" > comment.txt
+      
+      - name: Add comment to PR
+        uses: actions/github-script@v6
+        with: 
+          github-token: ${{ secrets.pat }}
+          script: |
+            const fs = require('fs');
+            const comment = fs.readFileSync('comment.txt', 'utf8');
+            if (comment) {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+                
+              })
+          
+    
