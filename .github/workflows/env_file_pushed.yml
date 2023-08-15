@@ -16,7 +16,7 @@ jobs:
       - name: Create comment
         id: comment
         run: |
-          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly.<br><br>To fix, run:<br>\`\`\`$ git rm --cached "env_file_name"\`\`\`<br>\`\`\`$ git add .\`\`\`<br>\`\`\`$ git commit -m 'Removed .env files from repository'\`\`\`<br>\`\`\`$ git push<br>\`\`\`" > comment.txt
+          echo "⚠️ **Warning**: \`.env\` files detected in the changes. Please do not modify them directly.<br><br>To fix, run:<br>\`\`\`$ git rm --cached \"env_file_name\"\`\`\`<br>\`\`\`$ git add .\`\`\`<br>\`\`\`$ git commit -m 'Removed .env files from repository'\`\`\`<br>\`\`\`$ git push\`\`\`<br>" > comment.txt
       
       - name: Add comment to PR
         uses: actions/github-script@v6
@@ -33,5 +33,6 @@ jobs:
                 body: comment
                 
               })
+              }
           
     
